@@ -1,1 +1,3 @@
-updated
+updated again but we're going to add another commit in a file
+that is not in the include path. So for those two commits,
+only one freight artifact should be created.
