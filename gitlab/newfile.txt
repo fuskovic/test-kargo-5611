@@ -1,3 +1,1 @@
-will add another commit to this one in a dir that is not specified
-in the excludePaths. Only one freight artifact should be created for the 2
-commits.
+updated
