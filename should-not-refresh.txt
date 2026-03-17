@@ -1,1 +1,2 @@
-updated
+this should not create a third freight artifact because
+this file is not in the include path
