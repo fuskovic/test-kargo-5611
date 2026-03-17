@@ -38,5 +38,5 @@ spec:
       repoURL: https://gitea.com/farisakuity/test-kargo-5611.git
       branch: main
       strictSemvers: false
-      excludePaths:
-        - gitlab
+      includePaths:
+        - gitea
