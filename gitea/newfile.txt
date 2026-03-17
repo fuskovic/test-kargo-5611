@@ -1,1 +1,2 @@
-we're going to add another commit after this one
+If two new commits are pushed and one of them is included
+in the includePath then only 1 freight artifact should be created
