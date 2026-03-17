@@ -1,19 +1,20 @@
+
 .PHONY: gitea
 gitea:
-	kargo apply -f gitea-test.yaml
-
-.PHONY: gitlab
-gitlab:
-	kargo apply -f gitlab-test.yaml
+	@kargo-darwin-arm64 apply -f gitea-test.yaml
 
 .PHONY: gitea-wh
 gitea-wh:
-	k get projectconfigs gitea \
+	@kubectl get projectconfigs gitea \
 	-n gitea \
 	-o=jsonpath='{.status.webhookReceivers[0].path}'
 
+.PHONY: gitlab
+gitlab:
+	@kargo-darwin-arm64 apply -f gitlab-test.yaml
+
 .PHONY: gitlab-wh
 gitlab-wh:
-	k get projectconfigs gitlab \
+	@kubectl get projectconfigs gitlab \
 	-n gitlab \
 	-o=jsonpath='{.status.webhookReceivers[0].path}'
