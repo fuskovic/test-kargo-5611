@@ -1,8 +1,13 @@
 apiVersion: kargo.akuity.io/v1alpha1
+kind: Project
+metadata:
+  name: gitea
+---
+apiVersion: kargo.akuity.io/v1alpha1
 kind: ProjectConfig
 metadata:
-  name: kargo-demo
-  namespace: kargo-demo
+  name: gitea
+  namespace: gitea
 spec:
   webhookReceivers: 
     - name: gitea-wh-receiver
@@ -14,7 +19,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: gitea-wh-secret
-  namespace: kargo-demo
+  namespace: gitea
 stringData:
   secret: not-so-secret-token
 ---
@@ -22,7 +27,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
   name: my-warehouse
-  namespace: kargo-demo
+  namespace: gitea
 spec:
   # Intentionally setting a really high internal interval to avoid
   # conflating warehouse refreshes triggered by the webhooks
@@ -30,6 +35,8 @@ spec:
   interval: 30m
   subscriptions:
   - git:
-      repoURL: git@github.com:fuskovic/wh-test-repo.git
+      repoURL: https://gitea.com/farisakuity/test-kargo-5611.git
       branch: main
       strictSemvers: false
+      includePaths:
+        - "gitea/**"
