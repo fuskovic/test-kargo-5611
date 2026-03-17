@@ -39,4 +39,4 @@ spec:
       branch: main
       strictSemvers: false
       includePaths:
-        - "gitlab/**"
+        - gitlab
