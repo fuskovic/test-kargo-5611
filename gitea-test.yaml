@@ -1,0 +1,35 @@
+apiVersion: kargo.akuity.io/v1alpha1
+kind: ProjectConfig
+metadata:
+  name: kargo-demo
+  namespace: kargo-demo
+spec:
+  webhookReceivers: 
+    - name: gitea-wh-receiver
+      gitea:
+        secretRef:
+          name: gitea-wh-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gitea-wh-secret
+  namespace: kargo-demo
+stringData:
+  secret: not-so-secret-token
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Warehouse
+metadata:
+  name: my-warehouse
+  namespace: kargo-demo
+spec:
+  # Intentionally setting a really high internal interval to avoid
+  # conflating warehouse refreshes triggered by the webhooks
+  # with regular reconciliation refreshes. Same thing for disabling strict semver.
+  interval: 30m
+  subscriptions:
+  - git:
+      repoURL: git@github.com:fuskovic/wh-test-repo.git
+      branch: main
+      strictSemvers: false
