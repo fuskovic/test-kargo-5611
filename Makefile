@@ -1,7 +1,6 @@
 
 .PHONY: gitea
 gitea:
-	@echo "Applying gitea test config..."
 	@kargo-darwin-arm64 apply -f gitea-test.yaml
 
 .PHONY: gitea-wh
