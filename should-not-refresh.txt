@@ -1,1 +1,1 @@
-testing
+this should not create a third freight artifact
