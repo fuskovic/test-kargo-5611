@@ -21,7 +21,7 @@ metadata:
   name: gitlab-wh-secret
   namespace: gitlab
 stringData:
-  secret: not-so-secret-token
+  secret-token: not-so-secret-token
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
